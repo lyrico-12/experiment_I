@@ -44,6 +44,7 @@ int main(int argc, char ** argv)
     assert(t);
     bcopy(s, t, end);
     free(s);
+    s = t;
   }
   /* print s from end to beginning */
   int i;

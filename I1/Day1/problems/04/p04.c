@@ -41,7 +41,11 @@ double angle(vect3 * A, vect3 * B)
 
 vect3 * mk_point(double x, double y, double z)
 {
-  vect3 p[1];
+  vect3 * p = (vect3 *)malloc(sizeof(vect3));
+  if (p == NULL) {
+    fprintf(stderr, "メモリの確保に失敗しました\n");
+    exit(1);
+  }
   p->x = x;
   p->y = y;
   p->z = z;
@@ -54,5 +58,7 @@ int main(int argc, char ** argv)
   vect3 * B = mk_point(atof(argv[4]), atof(argv[5]), atof(argv[6]));
   double a = angle(A, B);
   printf("%f\n", a);
+  free(A);
+  free(B);
   return 0;
 }

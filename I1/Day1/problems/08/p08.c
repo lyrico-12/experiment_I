@@ -119,9 +119,9 @@ line: | | | |6|7|.|3|+|(|1|*|3|
 
 */
   errno = 0;
-  char * endptr[1];
-  double x = strtod(p, endptr);
-  p = *endptr;
+  char * endptr;
+  double x = strtod(p, &endptr);
+  p = endptr;
   if (errno) {
     perror("strtod:");
     syntax_error();
@@ -146,8 +146,10 @@ double H_expression()
     return number();
   }
   case '(': {
+    p++;
     double x = E_expression();
     if (*p == ')') {
+      p++;
       return x;
     } else {
       syntax_error();
@@ -156,6 +158,7 @@ double H_expression()
   default:
     syntax_error();
   }
+  return 0;
 }
 
 double G_expression()
@@ -221,10 +224,10 @@ double E_expression()
   while (1) {
     if (*p == '+') {
       p++;
-      x =+ F_expression();
+      x += F_expression();
     } else if (*p == '-') {
       p++;
-      x =- F_expression();
+      x -= F_expression();
     } else {
       return x;
     }
@@ -233,6 +236,7 @@ double E_expression()
 
 int main()
 {
+  // 標準入力から1行読み込む
   char * s = fgets(line, MAXLINE, stdin);
   int n;
   if (s == NULL) { perror("fgets"); exit(1); }

@@ -16,16 +16,7 @@
  */
 
 #include <stdio.h>
-
-int main()
-{
-  int i;
-  for (i = 0; i < 100; i++) {
-    double y = cos2(i) + sin2(i);
-    printf("cos^2(%d)+sin^2(%d) = %f\n", i, i, y);
-  }
-  return 0;
-}
+#include <math.h>
 
 double cos2(double x) 
 {
@@ -38,3 +29,15 @@ double sin2(double x)
   double s = sin(x);
   return s * s;
 }
+
+
+int main()
+{
+  int i;
+  for (i = 0; i < 100; i++) {
+    double y = cos2((double)i) + sin2((double)i);
+    printf("cos^2(%d)+sin^2(%d) = %f\n", i, i, y);
+  }
+  return 0;
+}
+

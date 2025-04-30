@@ -14,13 +14,15 @@
 #include <stdio.h>
 int main()
 {
-  FILE * fp = fopen("pO5.c", "rb");
+  FILE * fp = fopen("p05.c", "rb");
   char buf[100];
   while (1) {
-    int n = fread(buf, 1, 100, fp);
+    size_t n = fread(buf, 1, 100, fp);
     if (n == 0) break;
     fwrite(buf, 1, n, stdout);
   }
+
+  fclose(fp);
   return 0;
 }
 
