@@ -16,8 +16,9 @@
  */
 
 #include <stdio.h>
-#include <math.h>
+#include <math.h> // math.hを追加
 
+// メイン関数の前にその他の関数を追加
 double cos2(double x) 
 {
   double c = cos(x);

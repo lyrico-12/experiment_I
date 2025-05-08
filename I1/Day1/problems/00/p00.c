@@ -12,7 +12,8 @@
  *
  */
 
-#include <stdio.h>
+// ヘッダーファイルを追加
+#include <stdio.h> 
 #include <stdlib.h>
 int main()
 {

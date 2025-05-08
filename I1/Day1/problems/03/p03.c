@@ -41,6 +41,7 @@ double angle(vect3 * A, vect3 * B)
 
 vect3 * mk_point(double x, double y, double z)
 {
+  // メモリの確保を追加
   vect3 * p = (vect3 *)malloc(sizeof(vect3));
   if (p == NULL) {
     fprintf(stderr, "メモリの確保に失敗しました\n");
@@ -59,6 +60,7 @@ int main(int argc, char ** argv)
   double a = angle(A, B);
   printf("%f\n", a);
 
+  // メモリの解放を追加
   free(A);
   free(B);
   return 0;

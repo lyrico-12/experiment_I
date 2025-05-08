@@ -18,6 +18,7 @@
  *    0.000000
  */
 
+// ヘッダーファイルを追加
 #include <stdio.h>
 #include <stdlib.h>
 

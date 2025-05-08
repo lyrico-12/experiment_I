@@ -119,6 +119,7 @@ line: | | | |6|7|.|3|+|(|1|*|3|
 
 */
   errno = 0;
+  // endptrをポインタにして、strtodにはそのアドレスを渡すように変更
   char * endptr;
   double x = strtod(p, &endptr);
   p = endptr;
@@ -146,10 +147,10 @@ double H_expression()
     return number();
   }
   case '(': {
-    p++;
+    p++; // ポインタを進める処理を追加
     double x = E_expression();
     if (*p == ')') {
-      p++;
+      p++; // ポインタを進める処理を追加
       return x;
     } else {
       syntax_error();
@@ -158,7 +159,7 @@ double H_expression()
   default:
     syntax_error();
   }
-  return 0;
+  return 0; // 追加
 }
 
 double G_expression()
@@ -224,10 +225,10 @@ double E_expression()
   while (1) {
     if (*p == '+') {
       p++;
-      x += F_expression();
+      x += F_expression(); // =と　+を入れ替える
     } else if (*p == '-') {
       p++;
-      x -= F_expression();
+      x -= F_expression(); // =と　-を入れ替える 
     } else {
       return x;
     }
