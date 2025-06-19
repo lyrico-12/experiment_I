@@ -14,10 +14,10 @@
 #include <stdio.h>
 int main()
 {
-  FILE * fp = fopen("p05.c", "rb"); // 数字の0を編集
+  FILE * fp = fopen("p05.c", "rb"); // edited O to 0
   char buf[100];
   while (1) {
-    size_t n = fread(buf, 1, 100, fp); //　intをsize_tに変更
+    size_t n = fread(buf, 1, 100, fp); // changed int to size_t
     if (n == 0) break;
     fwrite(buf, 1, n, stdout);
   }

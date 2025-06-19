@@ -44,7 +44,7 @@ int main(int argc, char ** argv)
     assert(t);
     bcopy(s, t, end);
     free(s);
-    s = t; // 追加 bufferを更新する
+    s = t; // added buffer update
   }
   /* print s from end to beginning */
   int i;

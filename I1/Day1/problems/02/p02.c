@@ -18,7 +18,7 @@
  *    0.000000
  */
 
-// ヘッダーファイルを追加
+// added header files
 #include <stdio.h>
 #include <stdlib.h>
 

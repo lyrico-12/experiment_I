@@ -119,7 +119,7 @@ line: | | | |6|7|.|3|+|(|1|*|3|
 
 */
   errno = 0;
-  // endptrをポインタにして、strtodにはそのアドレスを渡すように変更
+  // modified endptr to pointer and passed the address to strtod
   char * endptr;
   double x = strtod(p, &endptr);
   p = endptr;
@@ -147,10 +147,10 @@ double H_expression()
     return number();
   }
   case '(': {
-    p++; // ポインタを進める処理を追加
+    p++; // added pointer advance
     double x = E_expression();
     if (*p == ')') {
-      p++; // ポインタを進める処理を追加
+      p++; // added pointer advance
       return x;
     } else {
       syntax_error();
@@ -159,7 +159,7 @@ double H_expression()
   default:
     syntax_error();
   }
-  return 0; // 追加
+  return 0; // added return 0
 }
 
 double G_expression()
@@ -225,10 +225,10 @@ double E_expression()
   while (1) {
     if (*p == '+') {
       p++;
-      x += F_expression(); // =と　+を入れ替える
+      x += F_expression(); // modified = and +
     } else if (*p == '-') {
       p++;
-      x -= F_expression(); // =と　-を入れ替える 
+      x -= F_expression(); // modified = and -
     } else {
       return x;
     }
@@ -237,7 +237,6 @@ double E_expression()
 
 int main()
 {
-  // 標準入力から1行読み込む
   char * s = fgets(line, MAXLINE, stdin);
   int n;
   if (s == NULL) { perror("fgets"); exit(1); }

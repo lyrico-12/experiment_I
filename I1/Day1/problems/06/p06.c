@@ -12,14 +12,14 @@
  *
  */
 
-// ヘッダーファイルを追加
+// added header files
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
 
 int main()
 {
-  int fd = open("p06.c", O_RDONLY); // 数字の0を編集
+  int fd = open("p06.c", O_RDONLY); // modified O to 0
 
   char buf[100];
   while (1) {
@@ -28,6 +28,6 @@ int main()
     write(1, buf, n);
   }
 
-  close(fd); // closeを追加
+  close(fd); // added close
   return 0;
 }

@@ -19,7 +19,6 @@ int main(int argc, char *argv[]) {
 
     double f = 261.63;
     
-    // 16ビット符号付き整数の最大値
     const double MAX_AMP = 32767.0;
     int count = 0;
     // n音分の音階を生成
@@ -27,12 +26,9 @@ int main(int argc, char *argv[]) {
         // 現在の音階のインデックス（ドレミファソラシドの周期）
         int note_index = note % 8;
         
-        // 1音分（13230標本）の波形を生成
         for (int i = 0; i < SAMPLES_PER_NOTE; i++) {
-            // 時間（秒）
             double t = (double)i / SAMPLE_RATE;
             
-            // サイン波計算: x = A * sin(2πft)
             double sample = A * sin(2.0 * PI * f * t);
             
             // 16ビット符号付き整数に変換
@@ -51,6 +47,8 @@ int main(int argc, char *argv[]) {
             write(1, &output, sizeof(short));
         }
 
+        // 周波数を変更
+        // ミとファ、シとドの間隔は半音で２の1/12乗倍
         if (count % 7 == 2 || count % 7 == 6) {
             f = pow(2.0, 1.0/12.0) * f;
         } else {
